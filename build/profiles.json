@@ -1,0 +1,15 @@
+[{
+        "Id": 1,
+        "name": "Parvez",
+        "age": 30,
+        "bio": "enjoy movie",
+        "hobbies": ["swmming", "biking"]
+    },
+    {
+        "Id": 2,
+        "name": "Nawaz",
+        "age": 44,
+        "bio": "loves gardening",
+        "hobbies": ["gardening", "gaming"]
+    }
+]
