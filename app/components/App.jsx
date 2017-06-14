@@ -1,30 +1,39 @@
 import React from 'react'
 import Profile from './Profile.jsx'
 import AddProfile from './AddProfile.jsx'
+import {getProfiles} from '../utils/profilesApi.js'
 
 export default class App extends React.Component{
     constructor(){
         super();
         this.state={
-            profiles:[
-                {
-                    Id:1,
-                    name:'Parvez',
-                    age:30,
-                    bio: 'enjoy movie',
-                    hobbies: ['swmming','biking']
-                },
-                {
-                    Id:2,
-                    name:'Nawaz',
-                    age:44,
-                    bio:'loves gardening',
-                    hobbies:['gardening','gaming']
-                }
-            ]
+            // profiles:[
+            //     {
+            //         Id:1,
+            //         name:'Parvez',
+            //         age:30,
+            //         bio: 'enjoy movie',
+            //         hobbies: ['swmming','biking']
+            //     },
+            //     {
+            //         Id:2,
+            //         name:'Nawaz',
+            //         age:44,
+            //         bio:'loves gardening',
+            //         hobbies:['gardening','gaming']
+            //     }
+            // ]
+            profiles:[]
         };    
         this.addUser=this.addUser.bind(this);
-    }   
+    }
+
+    componentDidMount(){
+       getProfiles().then(profiles=>{           
+            this.setState({profiles:profiles})
+       })
+    }
+
     addUser(newProfile){
         // var user={
         //     Id: this.state.profiles.length+1,
@@ -42,7 +51,7 @@ export default class App extends React.Component{
            return (
                <div key={profile.Id}>
                     <Profile
-                        id={profile.Id}
+                        key={profile.Id}
                         name={profile.name}
                         age={profile.age}
                         bio={profile.bio}
